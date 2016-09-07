@@ -1,0 +1,11 @@
+setuptools-git
+seaborn
+bunch
+munch
+tqdm
+requests
+pathlib
+BeautifulSoup4
+lxml
+-e git://github.com/ryanpdwyer/pmefm.git#egg=pmefm
+-e git://github.com/ryanpdwyer/sigutils.git#egg=sigutils
