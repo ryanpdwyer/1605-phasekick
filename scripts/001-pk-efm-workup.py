@@ -10,7 +10,6 @@ files = glob.glob("../data/pk-efm/*.h5")
 outdir = '../results/pk-efm'
 
 
-
 now = time.time()
 i = 0
 itot = len(files)

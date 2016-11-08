@@ -10,7 +10,7 @@ import lockin
 import h5py
 import datetime
 
-# Estimated run time 12:10 min, rMBP 2012
+# Estimated run time 15 min, rMBP 2012
 
 print("tr-EFM Signal averaged curve fitting")
 print("====================================")
@@ -33,7 +33,7 @@ def arrays_to_stan_data(t, mu_df, sigma_df, N):
     'N': t[~m].size
     }
 
-outdir = '2015-12-17/df'
+outdir = '../results/tr-efm-pystan'
 
 grs = OrderedDict((
     ('151217-200319-p1sun-df',
@@ -84,7 +84,7 @@ grs = OrderedDict((
 )
 )
 
-file = '1603-df-workup.h5'
+file = '../results/tr-efm/tr-efm.h5'
 
 start = time.time()
 i = 0
