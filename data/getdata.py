@@ -21,7 +21,7 @@ def download_file(url, filename, nested=False):
 
 
 url_start =  "https://s3-us-west-2.amazonaws.com/1605-pk-efm-data/"
-folders = ['tr-efm/', 'pk-efm/', 'ancillary-efm/']
+folders = ['tr-efm/', 'pk-efm/', 'ancillary-efm/', 'subcycle-pk-efm']
 
 files = ['pk-efm/151217-201951-p1sun-phasekick.h5',
 'pk-efm/151217-205912-p3sun-phasekick.h5',
@@ -38,7 +38,13 @@ files = ['pk-efm/151217-201951-p1sun-phasekick.h5',
 'tr-efm/151217-211131-1sun-df.h5',
 'tr-efm/151217-234238-20sun-df-384.h5',
 'tr-efm/151218-003450-100sun-784.h5',
-'ancillary-efm/151218-021818-20sun-watch-decay-live.h5']
+'ancillary-efm/151218-021818-20sun-watch-decay-live.h5',
+'subcycle-pk-efm/151209-192327-800ns-pulse-10V.h5',
+'subcycle-pk-efm/151209-192456-400ns-pulse-10V.h5',
+'subcycle-pk-efm/151209-192620-200ns-pulse-10V.h5',
+'subcycle-pk-efm/151209-192746-100ns-pulse-10V.h5',
+'subcycle-pk-efm/151209-193134-050ns-pulse-10V.h5',
+]
 
 
 for folder in folders:
