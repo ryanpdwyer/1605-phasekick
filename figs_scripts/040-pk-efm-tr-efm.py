@@ -156,11 +156,13 @@ fig
 
 # In[7]:
 
+
+df100 = pd.read_csv("../results/pk-efm/151218-011055-100sun-phasekick-768.csv")
+df100data = df100[df100['expt'] == 'data']
+df100control = df100[df100['expt'] == 'control']
+
 lightpurple = '#ed0dd9'
 gold = '#dbb40c'
-
-
-# In[9]:
 
 with mpl.rc_context(rcParams):
     fig, ax = plt.subplots(figsize=(3.25, 2.7))
@@ -174,13 +176,18 @@ with mpl.rc_context(rcParams):
     dphi_out_p = p.percentile_func(dphi_out)
     ax.plot(pk.t,  pk.y_fit[0](50), '-', color='#dbb40c', linewidth=1)
     ax.fill_between(pk.t, pk.y_fit[0](15.9), pk.y_fit[0](84.1), color='y', alpha=0.3)
+    ax.plot((df100control.tp * 1e3).values,
+             df100control['dphi [cyc]'].values*1e3,
+             '.', zorder=0, color="0.85")
     t = gr_df['data/t'][:]
     ax.plot(t, dphi_out_p(50), '-', color='#ed0dd9', linewidth=1)
-#     ax.fill_between(pk.t, pk.y_fit[0](50) - pk.sigma[0](50),  pk.y_fit[0](50) + pk.sigma[0](50),
-#                    color='b', alpha=0.3, zorder=10)
+    # ax.fill_between(pk.t, pk.y_fit[0](50) - pk.sigma[0](50),  pk.y_fit[0](50) + pk.sigma[0](50),
+    #                color='b', alpha=0.3, zorder=10)
     ax.set_xlabel(r"Pulse time  $t_\mathrm{p}$ [ms]")
     ax.set_ylabel(r"Phase shift  $\Delta \phi$ [mcyc.]")
-    ax.set_ylim(-48, 5)
+    ax.set_xticks(np.arange(0, 1.4, 0.5))
+    ax.set_yticks(np.arange(-40, 5, 20))
+    ax.set_ylim(-48, 10)
     fig.tight_layout()
     fig.savefig('../figs/04a-dphi.pdf', bbox_inches='tight', transparent=True)
 
