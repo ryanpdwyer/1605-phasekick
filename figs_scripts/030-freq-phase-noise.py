@@ -144,6 +144,7 @@ workups = {}
 
 workups['815-10V-hv'] = phasekick.workup_df(fh, 5000, 15000, tmin, tmax)
 workups['815-0V'] = phasekick.workup_df(fh, 5000, 15000, 0.171, 0.1995)
+workups['0312-0V'] = phasekick.workup_df(fh, 3000, 12000, 0.171, 0.1995)
 workups['104-0V'] = phasekick.workup_df(fh, 1000, 4000, 0.1715, 0.1985)
 workups['104-0V-phi'] = phasekick.workup_df(fh, 1000, 4000, 0.1715, 0.1985)
 workups['104-10V'] = phasekick.workup_df(fh, 1000, 4000, tmin, tmax-0.001)
@@ -298,12 +299,12 @@ with mpl.rc_context(rcParams):
 # Phase noise
 
 r = 1.05
-xe, ye = log_bins(workups['815-0V']['psd_f'], workups['815-0V']['psd_phi'], r=r)
+xe, ye = log_bins(workups['0312-0V']['psd_f'], workups['0312-0V']['psd_phi'], r=r)
 fe, mage = sigutils.freqz(w_diff, fs=1e6, xlim=(30, 10e3), xlog=True)
 
 
-ax2ex, ax2ey = log_bins(workups['815-0V']['psd_f'],
-           workups['815-0V']['psd_phi']*abs(signal.freqz(w_diff, worN=2*np.pi*workups['815-0V']['psd_f']/1e6)[1])**2 * P_0208_factor,
+ax2ex, ax2ey = log_bins(workups['0312-0V']['psd_f'],
+           workups['0312-0V']['psd_phi']*abs(signal.freqz(w_diff, worN=2*np.pi*workups['0312-0V']['psd_f']/1e6)[1])**2 * P_0208_factor,
                            r=1.05)
 
 
