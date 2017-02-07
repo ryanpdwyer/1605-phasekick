@@ -25,9 +25,6 @@ def tau_prior(intensity):
 def df_prior(intensity):
     return -13 + -0.2 * intensity
 
-chains = 4
-iter = 10
-
 exp_priors = {
     'mu_tau': np.array([1, 3]),
     'sigma_tau': np.array([5, 5]),
@@ -38,35 +35,55 @@ exp_priors = {
 
 m_exp = 'exp2_sq_nc'
 
-now = time.time()
-i = 0
-itot = len(files)
-
 outdir = '../results/pk-efm-pystan/'
 
-for fname, intensity in files.items():
-    basename = os.path.splitext(fname)[0]
-    pk1 = p.PhasekickModel(m_exp, fname)
+def main(files, chains=4, iterations=10):
+    now = time.time()
+    i = 0
+    itot = len(files)
 
-    folder, filename = os.path.split(basename)
+    for fname, intensity in files.items():
+        basename = os.path.splitext(fname)[0]
+        pk1 = p.PhasekickModel(m_exp, fname)
 
-    print(basename)
-    print("\n\n")
+        folder, filename = os.path.split(basename)
 
-    print(time.strftime("%H:%M:%S",time.localtime()))
-    print("\n\n")
+        print(basename)
+        print("\n\n")
 
-    new_priors = copy.copy(exp_priors)
+        print(time.strftime("%H:%M:%S",time.localtime()))
+        print("\n\n")
 
-    new_priors['mu_tau'] = exp_priors['mu_tau'] * tau_prior(intensity)
-    new_priors['mu_df_inf'] = df_prior(intensity)
+        new_priors = copy.copy(exp_priors)
 
-    pk1.run(chains=chains, iter=iter, priors=new_priors)
-    sample_fname = os.path.join(outdir, 'test11'+filename+'_'+'exp2_sq_nc'+'.h5')
-    pk1.save(sample_fname)
+        new_priors['mu_tau'] = exp_priors['mu_tau'] * tau_prior(intensity)
+        new_priors['mu_df_inf'] = df_prior(intensity)
 
-    i += 1
-    elapsed = time.time() - now
+        pk1.run(chains=chains, iter=iterations, priors=new_priors)
+        sample_fname = os.path.join(outdir, 'test11'+filename+'_'+'exp2_sq_nc'+'.h5')
+        pk1.save(sample_fname)
 
-    print("{}/{} complete in {:.2f} min. Estimated {:.1f} min remaining.".format(
-        i, itot, elapsed / 60., elapsed / 60. * (itot - i) / i))
+        i += 1
+        elapsed = time.time() - now
+
+        print("{}/{} complete in {:.2f} min. Estimated {:.1f} min remaining.".format(
+            i, itot, elapsed / 60., elapsed / 60. * (itot - i) / i))
+
+if __name__ == '__main__':
+    import sys
+    argc = len(sys.argv)
+    
+    iterations = 10
+    chains = 1
+
+    if argc > 3:
+        raise ValueError("Too many arguments")
+    if argc > 2:
+        iterations = int(sys.argv[2])
+    if argc > 1:
+        if ('-h' in str(sys.argv[1])):
+            print("Usage: python 002-pk-efm-stan.py [chains] [iterations]")
+            sys.exit()
+        chains = int(sys.argv[1])
+
+    main(files, chains, iterations)

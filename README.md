@@ -17,4 +17,17 @@ package manager such as `conda` or `Canopy`.
 
 
 
+PyStan Notes
+------------
+
+I ran into issues with `pystan` finding gcc first on the path,
+but still linking against Mac's clang `libstdc++`.
+To fix, I linked Mac's default compilers into `/usr/local/bin`,
+and added that first to my path:
+
+    ln -s /usr/bin/gcc /usr/local/bin/gcc
+    ln -s /usr/bin/g++ /usr/local/bin/g++
+    export PATH="/usr/local/bin:$PATH"
+
+
 

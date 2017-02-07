@@ -19,7 +19,8 @@ echo -e "pk-EFM data workup \n\n"
 cd scripts
 
 python 001-pk-efm-workup.py
-python 002-pk-efm-stan.py
+# Arguments: [chains] [iterations]
+python 002-pk-efm-stan.py 2 1000
 python 003-pk-efm-plot.py
 
 t1=`date +%s`
@@ -46,3 +47,4 @@ python 050-subcycle-pk-efm.py
 t1=`date +%s`
 cd ..
 echo -e "Generated plots in $((t1-t2))"
+
