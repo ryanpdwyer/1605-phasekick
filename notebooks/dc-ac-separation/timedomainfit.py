@@ -204,7 +204,7 @@ def signal_average_parab_list(gr_list, ti, tf, invert=True, align_voltage=False)
 
 def signal_average_gr_parab(gr, ti, tf, invert=True, align_voltage=False):
     """Utility function to signal average a group from an HDF5 file."""
-    return signal_average_parab_list(gr.values(), ti, tf, invert=True, align_voltage=False)
+    return signal_average_parab_list(gr.values(), ti, tf, invert=invert, align_voltage=align_voltage)
 
 def pk_phase(f_i, df, f_f, tau, t0, tp):
     return lambda t: 2 * np.pi * np.where(t <= t0, f_i * (t-t0),
