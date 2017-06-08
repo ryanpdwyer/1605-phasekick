@@ -39,10 +39,15 @@ echo -e "\n\nGenerating plots\n\n"
 cd figs_scripts
 
 python 010-photocapacitance.py
-python 020-pk-efm-pulse-diagram.py
+jupyter nbconvert --execute 021-AF-main-revised.ipynb
+jupyter nbconvert --execute 022-fig2-variable-frequency-lock-in.ipynb
+jupyter nbconvert --execute 023-phase-shift.ipynb
 python 030-freq-phase-noise.py
 python 040-pk-efm-tr-efm.py
-python 050-subcycle-pk-efm.py
+jupyter nbconvert --execute 055-tr-efm-initial-voltage-pulse.ipynb
+jupyter nbconvert --execute 056-time-domain-voltage-pulse.ipynb
+jupyter nbconvert --execute 060-subcycle-pk-efm-all.ipynb
+
 
 t1=`date +%s`
 cd ..
