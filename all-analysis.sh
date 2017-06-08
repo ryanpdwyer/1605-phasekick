@@ -1,9 +1,9 @@
 # Get data first
-echo -e "Using python at: $(which python)\n\n"
+echo -e "\n\nUsing python at: $(which python)\n\n"
 python --version
-echo -e "\n\n"
+echo -e "\n"
 
-echo -e "\nDownloading data\n\n"
+echo -e "\nDownloading data\n"
 t1=`date +%s`
 
 cd data
@@ -39,14 +39,14 @@ echo -e "\n\nGenerating plots\n\n"
 cd figs_scripts
 
 python 010-photocapacitance.py
-jupyter nbconvert --execute 021-AF-main-revised.ipynb
-jupyter nbconvert --execute 022-fig2-variable-frequency-lock-in.ipynb
-jupyter nbconvert --execute 023-phase-shift.ipynb
+jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 021-AF-main-revised.ipynb
+jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 022-fig2-variable-frequency-lock-in.ipynb
+jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 023-phase-shift.ipynb
 python 030-freq-phase-noise.py
 python 040-pk-efm-tr-efm.py
-jupyter nbconvert --execute 055-tr-efm-initial-voltage-pulse.ipynb
-jupyter nbconvert --execute 056-time-domain-voltage-pulse.ipynb
-jupyter nbconvert --execute 060-subcycle-pk-efm-all.ipynb
+jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 055-tr-efm-initial-voltage-pulse.ipynb
+jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 056-time-domain-voltage-pulse.ipynb
+jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 060-subcycle-pk-efm-all.ipynb
 
 
 t1=`date +%s`
