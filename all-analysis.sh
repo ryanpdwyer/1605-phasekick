@@ -28,7 +28,10 @@ echo -e "\nWorked up pk-EFM data in $((t1-t2)) s\n\n"
 echo -e "\n\ntr-EFM data workup \n\n"
 
 python 010-tr-efm-workup.py
-python 011-tr-efm-stan.py
+python 011-tr-efm-stan.
+
+# Create a nice summary table of the pk-EFM experiments
+jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 100-generate-html-table-pk-efm.ipynb
 
 cd ..
 t2=`date +%s`

@@ -17,4 +17,4 @@ fi
 conda create -n $1 python=2.7 pip numpy scipy matplotlib nose pandas pystan h5py docutils ipython jupyter notebook lxml scikit-learn
 
 source activate $1
-pip install -r requirements.txt
+pip install -r requirements-frozen.txt

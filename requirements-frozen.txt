@@ -1,10 +1,10 @@
+setuptools-git==1.2
+seaborn==0.7.1
 bunch==1.0.1
-lxml==3.6.0
-munch==2.0.4
+munch==2.1.1
+tqdm==4.14.0
+requests==2.17.3
 pathlib==1.0.1
--e git://github.com/ryanpdwyer/pmefm.git@8ebfff292c87dcaa0b9cc8c5ecedf2bd2fc69779#egg=pmefm
-requests==2.10.0
-seaborn==0.7.0
-setuptools-git==1.1
--e git://github.com/ryanpdwyer/sigutils.git@d575591ba24fc07020d286147e805c62fddc957a#egg=sigutils
-tqdm==4.5.0
+beautifulsoup4==4.6.0
+-e git://github.com/ryanpdwyer/pmefm.git@e4fd6388428761db35f8ece11ea68f7475e40628#egg=pmefm
+-e git://github.com/ryanpdwyer/sigutils.git@341513f403dee0b2c49e9630c86f0483c0d2d359#egg=sigutils
