@@ -1,6 +1,8 @@
 Microsecond photocapacitance transients data and workup
 =======================================================
 
+[![DOI](https://zenodo.org/badge/67623824.svg)](https://zenodo.org/badge/latestdoi/67623824)
+
 This repository contains the data and workup for the paper, "Microsecond photocapacitance transients observed using a charged microcantilever as a gated
 mechanical integrator," by Ryan P. Dwyer, Sarah R. Nathan, and John A. Marohn [[DOI: 10.1126/sciadv.1602951](http://dx.doi.org/10.1126/sciadv.1602951)].
 
