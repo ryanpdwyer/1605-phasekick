@@ -84,7 +84,7 @@ if __name__ == '__main__':
         iterations = int(sys.argv[2])
     if argc > 1:
         if ('-h' in str(sys.argv[1])):
-            print("Usage: python 002-pk-efm-stan.py [chains] [iterations]")
+            print("Usage: python 102-pk-efm-stan-single.py [chains] [iterations]")
             sys.exit()
         chains = int(sys.argv[1])
 

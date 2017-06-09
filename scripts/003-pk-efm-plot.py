@@ -17,7 +17,11 @@ itot = len(files)
 for fname in files:
     basename = os.path.splitext(fname)[0]
 
+
     folder, filename = os.path.split(basename)
+
+    print(fname)
+    print(filename)
 
     print(time.strftime("%H:%M:%S",time.localtime()))
     print("\n\n")

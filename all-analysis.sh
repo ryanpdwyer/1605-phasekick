@@ -21,6 +21,10 @@ cd scripts
 python 001-pk-efm-workup.py
 # Arguments: [chains] [iterations]
 python 002-pk-efm-stan.py 2 1000
+
+# Single exponential fit is necessary for the final plot in Fig~2
+python 102-pk-efm-stan-single.py 2 1000
+
 python 003-pk-efm-plot.py
 
 t1=`date +%s`
@@ -28,7 +32,7 @@ echo -e "\nWorked up pk-EFM data in $((t1-t2)) s\n\n"
 echo -e "\n\ntr-EFM data workup \n\n"
 
 python 010-tr-efm-workup.py
-python 011-tr-efm-stan.
+python 011-tr-efm-stan.py
 
 # Create a nice summary table of the pk-EFM experiments
 jupyter nbconvert --execute --ExecutePreprocessor.timeout=600 100-generate-html-table-pk-efm.ipynb
